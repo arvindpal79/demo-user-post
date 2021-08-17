@@ -11,6 +11,7 @@ export class AppComponent {
   users:any = [];
   posts:any = [];
   userPost:any = [];
+  activeUserId = '';
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +28,7 @@ export class AppComponent {
   }
 
   showPost = (userId:string) => {
+    this.activeUserId = userId;
     this.userPost = this.posts.filter((post:any) => post?.userId === userId);
   }
 }

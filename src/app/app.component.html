@@ -1,7 +1,7 @@
 <h1 [innerText]="'USER POSTS'"></h1>
 <p [innerText]="'Please select a user to find their comments:'"></p>
 <ng-container *ngFor="let user of users">
-  <button (click)="showPost(user.id)">{{user.name}}</button>
+  <button [class.active]="user.id === activeUserId" (click)="showPost(user.id)">{{user.name}}</button>
 </ng-container>
 
 <app-user-posts [userPosts]="userPost" *ngIf="userPost[0]"></app-user-posts>
