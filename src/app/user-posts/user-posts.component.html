@@ -1,0 +1,15 @@
+<h2 [innerText]="'Posts for Leanne Graham'"></h2>
+<ng-container *ngFor="let x of [].constructor(postsLen); let i = index;">
+  <div (click)="showComments(posts[i]?.id)">
+    <h3 [innerText]="posts[i]?.title"></h3>
+    <p [innerText]="posts[i]?.body"></p>
+    <ul *ngIf="activePost === posts[i]?.id">
+      <li *ngFor="let comment of postComments">
+        <p [innerText]="comment?.body"></p>
+        <p [innerText]="comment?.email"></p>
+      </li>
+    </ul>
+    <hr>
+  </div>
+</ng-container>
+<button [innerText]="'Load more...'" (click)="postsLen = posts.length" *ngIf="postsLen < posts.length"></button>
