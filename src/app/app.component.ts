@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { UserDataHttpService } from './http-data/user-data-http.service';
 
 @Component({
   selector: 'app-root',
@@ -7,28 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demo-user-post';
-  users:any = [];
-  posts:any = [];
   userPost:any = [];
-  activeUserId = '';
+  userName:string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.getUsers().subscribe(users => this.users = users);
-    this.getUserPost().subscribe(posts => this.posts = posts);
-  }
-
-  getUsers = () => {
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
-  }
-  getUserPost = () => {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
-  }
-
-  showPost = (userId:string) => {
-    this.activeUserId = userId;
-    this.userPost = this.posts.filter((post:any) => post?.userId === userId);
+  updateUserPost = (e:{userPost:Array<string>, userName:string}) => {
+    this.userPost = e.userPost;
+    this.userName = e.userName;
   }
 }

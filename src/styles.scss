@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-button {
-  background-color: blue;
-  color: #fff;
-  margin: 2px 4px;
-  padding: 2px 4px;
+a {
+  border-color: transparent !important;
+  &:focus {
+    box-shadow: none !important;
+  }
 }
 .active {
-  background-color: orange;
-  color: #333;
+  background-color: orange !important;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

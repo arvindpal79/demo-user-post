@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserDataHttpService } from '../http-data/user-data-http.service';
 
 @Component({
   selector: 'app-user-posts',
@@ -10,24 +11,23 @@ export class UserPostsComponent implements OnInit {
   posts:Array<any> = [];
   postComments:any = [];
   postsLen = 3;
+  @Input() userName = '';
   @Input() set userPosts(posts:Array<any>){
     this.posts = posts;
     this.postsLen = 3;
+
+    this.heading = `Posts for ${this.userName}`;
   };
   activePost:any = null;
+  heading = ``;
 
-  constructor(private http: HttpClient) { }
+  constructor(private userData: UserDataHttpService) { }
 
-  ngOnInit(): void {
-  }
-
-  getPostComments = (postId:string) => {
-    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
-  }
+  ngOnInit(): void {}
 
   showComments = (postId:string) => {
     this.activePost = postId;
-    this.getPostComments(postId).subscribe(posts => this.postComments = posts);
+    this.userData.getPostComments(postId).subscribe(posts => this.postComments = posts);
   }
 
 }
