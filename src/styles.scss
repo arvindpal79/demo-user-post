@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-a {
-  border-color: transparent !important;
-  &:focus {
-    box-shadow: none !important;
+.user-list {
+  a {
+    border-color: transparent !important;
+    border-radius: 0;
+    margin: 3px;
+    &:focus {
+      box-shadow: none !important;
+    }
   }
-}
-.active {
-  background-color: orange !important;
+  .active {
+    background-color: orange !important;
+  }
 }
 
 /* Importing Bootstrap SCSS file. */

@@ -4,9 +4,9 @@
     <h3 [innerText]="posts[i]?.title"></h3>
     <p [innerText]="posts[i]?.body"></p>
     <ul *ngIf="activePost === posts[i]?.id">
-      <li *ngFor="let comment of postComments">
-        <p [innerText]="comment?.body"></p>
-        <p [innerText]="comment?.email"></p>
+      <li *ngFor="let comment of postComments" class="pb-3">
+        <p [innerText]="comment?.body" class="mb-1"></p>
+        <a class="link" [innerText]="comment?.email"></a>
       </li>
     </ul>
     <hr>
